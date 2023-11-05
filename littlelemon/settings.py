@@ -75,6 +75,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'littlelemon.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
+DJOSER = {"USER_ID_FIELD": "username"}
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -130,9 +141,9 @@ USE_TZ = True
 # The settings for static files have been updated for the Graded assessment
 STATIC_URL = 'restaurant/static/'
 
-STATICFILES_DIRS = [
-    "restaurant/static",
-]
+# STATICFILES_DIRS = [
+#     "restaurant/static",
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
